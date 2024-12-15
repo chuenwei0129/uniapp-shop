@@ -1,16 +1,23 @@
 import path from 'node:path'
-import { execSync } from 'node:child_process'
 import dayjs from 'dayjs'
 import { defineConfig, loadEnv } from 'vite'
+// 最核心的 uni 插件，没有它就不能在 vite 项目跑 uniapp，
+// 其他所有的 uni插件 都需要经通过它的手来编译，
+// 所以写法上，都是先写 UniXXX，再写 Uni
 import Uni from '@dcloudio/vite-plugin-uni'
 // @see https://uni-helper.js.org/vite-plugin-uni-pages
+// uni 插件，也是 unibest 灵魂插件，route-block 就是它的功劳，
+// 让你可以直接在本文件就能设置页面的路元信息，
+// 无需跑去 pages.json 配置，同时支持 pages.config.ts 编写 pages.json
 import UniPages from '@uni-helper/vite-plugin-uni-pages'
 // @see https://uni-helper.js.org/vite-plugin-uni-layouts
+// uni 插件，支多种 layouts 布局，充分利用这个特性实现平时不容实现的写法
 import UniLayouts from '@uni-helper/vite-plugin-uni-layouts'
 // @see https://github.com/uni-helper/vite-plugin-uni-platform
 // 需要与 @uni-helper/vite-plugin-uni-pages 插件一起使用
 import UniPlatform from '@uni-helper/vite-plugin-uni-platform'
 // @see https://github.com/uni-helper/vite-plugin-uni-manifest
+// uni 插件，支持 manifest.config.ts 编写 manifest.json
 import UniManifest from '@uni-helper/vite-plugin-uni-manifest'
 // @see https://unocss.dev/
 import UnoCSS from 'unocss/vite'
